@@ -1,9 +1,10 @@
 import { type inferAsyncReturnType } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import { type Session } from "next-auth";
+import { TwitterApi } from "twitter-api-v2";
 
 import { getServerAuthSession } from "../common/get-server-auth-session";
-import { prisma } from "../db/client";
+import { prisma, withConnection } from "../db/client";
 
 type CreateContextOptions = {
   session: Session | null;
@@ -15,9 +16,16 @@ type CreateContextOptions = {
  * @see https://beta.create.t3.gg/en/usage/trpc#-servertrpccontextts
  **/
 export const createContextInner = async (opts: CreateContextOptions) => {
+  if (!process.env.TWITTER_API_BEARER) {
+    throw new Error("TWITTER API TOKEN NOT DEFINED");
+  }
+  const twitter = new TwitterApi(process.env.TWITTER_API_BEARER).readOnly;
+
   return {
     session: opts.session,
     prisma,
+    withConnection: withConnection,
+    twitter: twitter,
   };
 };
 
