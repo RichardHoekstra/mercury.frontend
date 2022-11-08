@@ -1,18 +1,18 @@
 import type { AppRouter } from "../../server/trpc/router/_app";
-import {
+import type {
   ColumnFiltersState,
   PaginationState,
   SortingState,
   Updater,
 } from "@tanstack/react-table";
 import type { inferProcedureInput, inferProcedureOutput } from "@trpc/server";
-import { NextPage } from "next";
+import type { NextPage } from "next";
 import { useEffect, useMemo, useState } from "react";
 import { trpc } from "../../utils/trpc";
-import { inferElementType } from "../../utils/types";
+import type { inferElementType } from "../../utils/types";
 
 import { createTheme, ThemeProvider, useTheme } from "@mui/material";
-import MaterialReactTable, { MRT_ColumnDef } from "material-react-table";
+import MaterialReactTable, { type MRT_ColumnDef } from "material-react-table";
 import Link from "next/link";
 
 // Hook
