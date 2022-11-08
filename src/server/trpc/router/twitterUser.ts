@@ -391,22 +391,18 @@ export const twitterUserRouter = router({
               input.filters.find((x) => x.id === "weighted_marked_followers")
                 ?.value?.[1]
             ),
-            account_created_at_min: undefined,
-            account_created_at_max: undefined,
-            // account_created_at_min: safeParseDate(
-            //     optionallyStartOfYear(
-            //         input.filters.find(
-            //             (x) => x.id === "account_created_at"
-            //         )?.value?.[0]
-            //     )
-            // ),
-            // account_created_at_max: safeParseDate(
-            //     optionallyEndOfYear(
-            //         input.filters.find(
-            //             (x) => x.id === "account_created_at"
-            //         )?.value?.[1]
-            //     )
-            // ),
+            account_created_at_min: safeParseDate(
+              optionallyStartOfYear(
+                input.filters.find((x) => x.id === "account_created_at")
+                  ?.value?.[0]
+              )
+            ),
+            account_created_at_max: safeParseDate(
+              optionallyEndOfYear(
+                input.filters.find((x) => x.id === "account_created_at")
+                  ?.value?.[1]
+              )
+            ),
             followers_count_min: safeParseInt(
               input.filters.find((x) => x.id === "followers_count")?.value?.[0]
             ),
@@ -431,7 +427,7 @@ export const twitterUserRouter = router({
             tweet_count_max: safeParseInt(
               input.filters.find((x) => x.id === "tweet_count")?.value?.[1]
             ),
-            sort_column: input.sorting?.[0]?.id ?? "marked_followers",
+            sort_column: input.sorting?.[0]?.id ?? "weighted_difference",
             desc: input.sorting?.[0]?.desc ?? true,
             offset: input.offset,
             limit: input.limit,
