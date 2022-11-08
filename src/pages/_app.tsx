@@ -5,6 +5,7 @@ import { SessionProvider } from "next-auth/react";
 import { trpc } from "../utils/trpc";
 
 import "../styles/globals.css";
+import { NavBar } from "../components/NavBar";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -12,7 +13,10 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <NavBar></NavBar>
+      <div className="bg-gradient-to-t from-gray-800 to-gray-900 text-white">
+        <Component {...pageProps} />
+      </div>
     </SessionProvider>
   );
 };
