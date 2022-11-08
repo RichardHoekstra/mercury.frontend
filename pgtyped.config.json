@@ -1,0 +1,13 @@
+{
+  "transforms": [
+    {
+      "mode": "sql",
+      "include": "**/*.sql",
+      "emitTemplate": "{{dir}}/types/{{name}}.ts"
+    }
+  ],
+  "srcDir": "./src/server/db/queries",
+  "failOnError": true,
+  "camelCaseColumnNames": false,
+  "dbUrl": "postgresql://postgres:C3ea07AaSLtU75XZyRMa@containers-us-west-31.railway.app:6549/railway"
+}
