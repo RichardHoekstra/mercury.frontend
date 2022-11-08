@@ -155,7 +155,7 @@ const Trending: NextPage = () => {
           const value = cell?.getValue<string | undefined>();
           if (!value) return <div></div>;
           return (
-            <Link href={`/user/${value}`}>
+            <Link legacyBehavior href={`/user/${value}`}>
               <a className="visited:text-gray-400">{value}</a>
             </Link>
           );

@@ -40,7 +40,7 @@ const ListUsers = (props: {
                 />
               </td>
               <td className="max-w-[200px] truncate hover:max-w-none hover:bg-white hover:bg-opacity-30">
-                <Link href={`/user/${user.username}`}>
+                <Link legacyBehavior href={`/user/${user.username}`}>
                   <a className="visited:text-gray-400">{user.name}</a>
                 </Link>
               </td>
@@ -196,7 +196,10 @@ export const User: NextPage = () => {
           )}
           <div className="mb-2"></div>
           <div className="flex flex-row items-center">
-            <div className="text-lg font-bold">{queryData.name}</div>
+            <Link href={`https://twitter.com/${queryData.username}`}>
+              <div className="text-lg font-bold">{queryData.name}</div>
+            </Link>
+
             {metadata.verified && (
               <svg
                 viewBox="0 0 24 24"
