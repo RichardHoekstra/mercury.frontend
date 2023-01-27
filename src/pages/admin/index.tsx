@@ -32,10 +32,15 @@ const EditMarkedUser = (user: TUser) => {
     >
       <div className="flex flex-row items-center justify-between">
         <div className="flex flex-row space-x-4">
-          <div className="flex w-[20ch] flex-col truncate">
+          <Link
+            className="flex w-[20ch] flex-col truncate"
+            target="_blank"
+            href={`https://twitter.com/${user.username}`}
+          >
             <span className="font-bold">{user.name}</span>
             <span className="font-light opacity-70">@{user.username}</span>
-          </div>
+          </Link>
+
           <div className="flex space-x-1">
             <span className="font-bold">{user.markedWeight}</span>
             <span className="font-light opacity-70">weight</span>
