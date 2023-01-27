@@ -34,13 +34,13 @@ const Tweets: NextPage = () => {
         <div className="max-w-[200px]">
           <label
             htmlFor="intervals"
-            className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400"
+            className="mb-2 block text-sm font-medium text-gray-400"
           >
             Select an interval
           </label>
           <select
             id="intervals"
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            className="block w-full rounded-lg border border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500"
             onChange={(e) => setInterval(e.target.value as intervalOptionType)}
           >
             {intervalOptions.map((option) => {

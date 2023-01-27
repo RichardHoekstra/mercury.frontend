@@ -68,7 +68,7 @@ const EditMarkedUser = (user: TUser) => {
             <div className="flex flex-row items-center space-x-2">
               <label
                 htmlFor="small-input"
-                className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                className="mb-2 block text-sm font-medium text-white"
               >
                 Weight
               </label>
@@ -86,7 +86,7 @@ const EditMarkedUser = (user: TUser) => {
                 value={weight?.toString()}
                 type="text"
                 id="small-input"
-                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-xs"
+                className="block w-full rounded-lg border  border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 sm:text-xs"
               ></input>
             </div>
             <button
@@ -120,7 +120,7 @@ const Admin: NextPage = () => {
         <div className="flex flex-col items-center space-x-2">
           <label
             htmlFor="small-input"
-            className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            className="mb-2 block text-sm font-medium text-white"
           >
             Add user
           </label>
@@ -132,7 +132,7 @@ const Admin: NextPage = () => {
               value={inputUsername}
               type="text"
               id="small-input"
-              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-xs"
+              className="block w-full rounded-lg border  border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 sm:text-xs"
             ></input>
             <button
               onClick={() => handleAddUser()}
