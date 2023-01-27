@@ -29,7 +29,7 @@ const Tweets: NextPage = () => {
   }
 
   return (
-    <div>
+    <div className="min-h-screen">
       <div className="container mx-auto flex flex-col items-center gap-4 py-16">
         <div className="max-w-[200px]">
           <label
