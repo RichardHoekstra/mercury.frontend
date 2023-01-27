@@ -30,26 +30,28 @@ const Tweets: NextPage = () => {
 
   return (
     <div>
-      <label
-        htmlFor="intervals"
-        className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400"
-      >
-        Select an option
-      </label>
-      <select
-        id="intervals"
-        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-        onChange={(e) => setInterval(e.target.value as intervalOptionType)}
-      >
-        {intervalOptions.map((option) => {
-          return (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          );
-        })}
-      </select>
       <div className="container mx-auto flex flex-col items-center gap-4 py-16">
+        <div className="max-w-[200px]">
+          <label
+            htmlFor="intervals"
+            className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400"
+          >
+            Select an interval
+          </label>
+          <select
+            id="intervals"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            onChange={(e) => setInterval(e.target.value as intervalOptionType)}
+          >
+            {intervalOptions.map((option) => {
+              return (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              );
+            })}
+          </select>
+        </div>
         {data &&
           data.map((tweet) => {
             return (
