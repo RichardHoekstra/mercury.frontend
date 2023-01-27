@@ -196,7 +196,10 @@ export const User: NextPage = () => {
           )}
           <div className="mb-2"></div>
           <div className="flex flex-row items-center">
-            <Link href={`https://twitter.com/${queryData.username}`}>
+            <Link
+              target="_blank"
+              href={`https://twitter.com/${queryData.username}`}
+            >
               <div className="text-lg font-bold">{queryData.name}</div>
             </Link>
 

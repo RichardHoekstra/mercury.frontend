@@ -11,7 +11,6 @@ export const NavBar = () => {
     { name: "Home", url: "/" },
     { name: "Users", url: "/users" },
     { name: "Tweets", url: "/tweets" },
-    { name: "Discover", url: "/discover" },
     { name: "Admin", url: "/admin" },
   ];
 

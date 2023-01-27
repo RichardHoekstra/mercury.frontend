@@ -113,7 +113,7 @@ const Popular: NextPage = () => {
           const value = cell?.getValue<string | undefined>();
           if (!value) return <div></div>;
           return (
-            <Link legacyBehavior href={`/user/${value}`}>
+            <Link legacyBehavior href={`/user/${value}`} target="_blank">
               <a className="visited:text-gray-400">{value}</a>
             </Link>
           );

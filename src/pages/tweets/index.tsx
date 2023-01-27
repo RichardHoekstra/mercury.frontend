@@ -3,6 +3,7 @@ import { useState } from "react";
 import { trpc } from "../../utils/trpc";
 import type { AppRouter } from "../../server/trpc/router/_app";
 import type { inferProcedureInput } from "@trpc/server";
+import Link from "next/link";
 
 type queryInputType = inferProcedureInput<AppRouter["tweet"]["popular"]>;
 type intervalOptionType = queryInputType["interval"];
@@ -28,7 +29,7 @@ const Tweets: NextPage = () => {
   }
 
   return (
-    <div className="h-screen">
+    <div>
       <label
         htmlFor="intervals"
         className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-400"
@@ -48,19 +49,82 @@ const Tweets: NextPage = () => {
           );
         })}
       </select>
-      <div>
+      <div className="container mx-auto flex flex-col items-center gap-4 py-16">
         {data &&
           data.map((tweet) => {
             return (
-              <div key={tweet.id} className="flex flex-row space-x-2">
-                <div>{tweet.likes.toString()}</div>
-                <div>{tweet.username}</div>
-                <div className="max-w-md">{tweet.tweetText}</div>
-                <div>{tweet.like_count}</div>
-                <div>{tweet.retweet_count}</div>
-                <div>{tweet.reply_count}</div>
-                <div>{tweet.quote_count}</div>
-                <div>{tweet.createdAt.toISOString()}</div>
+              <div
+                key={tweet.id}
+                className="container flex max-w-xl flex-col rounded border border-gray-600 bg-gray-800 bg-opacity-10 p-4"
+              >
+                <div className="flex space-x-2">
+                  <span className="font-bold">{tweet.likes.toString()}</span>
+                  <Link
+                    className="hover:bg-white hover:bg-opacity-10"
+                    href={`https://twitter.com/${tweet.username}`}
+                  >
+                    <div className="font-bold">{tweet.username}</div>
+                  </Link>
+                  <Link
+                    className="hover:bg-white hover:bg-opacity-10"
+                    target="_blank"
+                    href={`https://twitter.com/twitter/status/${tweet.id}`}
+                  >
+                    <span className="font-light opacity-70">
+                      {tweet.createdAt.toLocaleDateString(undefined, {
+                        hour12: false,
+                        weekday: "short",
+                        hour: "numeric",
+                        minute: "numeric",
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })}
+                    </span>
+                  </Link>
+                </div>
+                <div className="mb-2"></div>
+                <div>
+                  <div className="max-w-md">{tweet.tweetText}</div>
+                </div>
+                <div className="mb-2"></div>
+                <div className="flex flex-row space-x-4">
+                  <div className="flex space-x-1">
+                    <span className="font-bold">{tweet.retweet_count}</span>
+                    <span className="font-light opacity-70">Retweets</span>
+                  </div>
+                  <div className="flex space-x-1">
+                    <span className="font-bold">{tweet.quote_count}</span>
+                    <span className="font-light opacity-70">Quote Tweets</span>
+                  </div>
+                  <div className="flex space-x-1">
+                    <span className="font-bold">{tweet.like_count}</span>
+                    <span className="font-light opacity-70">Likes</span>
+                  </div>
+                  <div className="flex space-x-1">
+                    <span className="font-bold">{tweet.reply_count}</span>
+                    <span className="font-light opacity-70">Replies</span>
+                  </div>
+                </div>
+                <div className="mt-1 mb-2 border-b border-gray-600"></div>
+                <div className="flex flex-row flex-wrap">
+                  {tweet.likers &&
+                    tweet.likers.map((liker) => {
+                      return (
+                        <div
+                          className="max-w-[16ch] overflow-hidden bg-white bg-opacity-5 pr-1 hover:max-w-none hover:bg-opacity-30 [&:nth-child(odd)]:bg-opacity-10 hover:[&:nth-child(odd)]:bg-opacity-30"
+                          key={liker}
+                        >
+                          <Link
+                            target="_blank"
+                            href={`https://twitter.com/${liker}`}
+                          >
+                            <span>{liker}</span>
+                          </Link>
+                        </div>
+                      );
+                    })}
+                </div>
               </div>
             );
           })}
