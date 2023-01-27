@@ -52,6 +52,7 @@ const Tweets: NextPage = () => {
             })}
           </select>
         </div>
+        {!data && <div>Loading...</div>}
         {data &&
           data.map((tweet) => {
             return (
